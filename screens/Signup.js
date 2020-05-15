@@ -45,23 +45,27 @@ class Signup extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#00A7E1',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		paddingBottom: 1,
+    	paddingTop: 50
 	},
 	inputBox: {
-		width: '85%',
+		width: '70%',
 		margin: 10,
 		padding: 15,
 		fontSize: 16,
 		borderColor: '#d3d3d3',
 		borderBottomWidth: 1,
-		textAlign: 'center'
+		textAlign: 'center',
+		paddingHorizontal: 4,
+    	paddingTop: 4
 	},
 	button: {
 		marginTop: 30,
 		marginBottom: 20,
-		paddingVertical: 5,
+		paddingVertical: 10,
 		alignItems: 'center',
 		backgroundColor: '#FFA611',
 		borderColor: '#FFA611',

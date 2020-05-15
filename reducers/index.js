@@ -8,7 +8,7 @@ const user = (state = {}, action) => {
 		case SIGNUP:
 			return action.payload
 		case UPDATE_NAME:
-			return { ...state, displayName: action.payload }
+			return { ...state, name: action.payload }
 		case UPDATE_EMAIL:
 			return { ...state, email: action.payload }
 		case UPDATE_PASSWORD:

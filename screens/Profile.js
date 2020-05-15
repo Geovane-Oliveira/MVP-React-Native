@@ -12,10 +12,11 @@ class Profile extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text>Profile Screen</Text>
+				<Text>Dashboard do usuário</Text>
+				<Text>Olá {this.props.user.name}</Text>
 				<Text>{this.props.user.email}</Text>
-				<Text>{this.props.user.uid}</Text>
-				<Button title='Logout' onPress={this.handleSignout} />
+				<Text>Seu ID: {this.props.user.uid}</Text>
+				<Button title='Sair' onPress={this.handleSignout} />
 			</View>
 		)
 	}

@@ -50,6 +50,7 @@ export const getUser = uid => {
 			const user = await db
 				.collection('users')
 				.doc(uid)
+				//.doc(name)
 				.get()
 
 			dispatch({ type: LOGIN, payload: user.data() })
@@ -60,7 +61,6 @@ export const getUser = uid => {
 }
 
 /*
-//Novo
 export const getUserName = name => {
 	return async (dispatch, getState) => {
 		try {
@@ -68,7 +68,6 @@ export const getUserName = name => {
 				.collection('users')
 				.doc(name)
 				.get()
-
 			dispatch({ type: LOGIN, payload: user.data() })
 		} catch (e) {
 			alert(e)
@@ -80,14 +79,14 @@ export const getUserName = name => {
 export const signup = () => {
 	return async (dispatch, getState) => {
 		try {
-			const { email, password } = getState().user
+			const { name, email, password } = getState().user
 			const response = await Firebase.auth().createUserWithEmailAndPassword(email, password)
-		
+			//https://www.youtube.com/watch?v=pSG72V5aPkI
 			if (response.user.uid) {
 				const user = {
 					uid: response.user.uid,
-					email: email
-					//name: displayName
+					email: email,
+					name: name
 				}
 
 				db.collection('users')
