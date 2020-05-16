@@ -37,10 +37,13 @@ class Login extends React.Component {
 				<TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
 					<Text style={styles.buttonText}>Entrar</Text>
 				</TouchableOpacity>
-				<Button
-					title="Não tem uma conta? Cadastre-se"
-					onPress={() => this.props.navigation.navigate('Signup')}
-				/>
+
+				<View style={styles.row}>
+       			 	<Text style={styles.label}>Não tem uma conta? </Text>
+        			<TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')}>
+          				<Text style={styles.link}>Cadastre-se</Text>
+        			</TouchableOpacity>
+      			</View>
 			</View>
 		)
 	}
@@ -49,7 +52,7 @@ class Login extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#00A7E1',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -80,7 +83,18 @@ const styles = StyleSheet.create({
 	},
 	buttonSignup: {
 		fontSize: 12
-	}
+	},
+	row: {
+		flexDirection: "row",
+		marginTop: 4
+	},
+	link: {
+		fontWeight: "bold",
+		color: "#2C2929"
+	},
+	label: {
+		color: "#FDFDFF"
+	},
 })
 
 const mapDispatchToProps = dispatch => {

@@ -6,7 +6,7 @@ import Firebase from '../config/Firebase'
 class Profile extends React.Component {
 	handleSignout = () => {
 		Firebase.auth().signOut()
-		this.props.navigation.navigate('Login')
+		this.props.navigation.navigate('Welcome')
 	}
 
 	render() {
@@ -17,6 +17,7 @@ class Profile extends React.Component {
 				<Text>{this.props.user.email}</Text>
 				<Text>Seu ID: {this.props.user.uid}</Text>
 				<Button title='Sair' onPress={this.handleSignout} />
+				<Button title='Inicio' onPress={() => this.props.navigation.navigate('Welcome')} />
 			</View>
 		)
 	}
