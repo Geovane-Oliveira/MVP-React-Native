@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Expo Firebase Auth",
-    "slug": "expofirebaseauth",
+    "name": "MVP Startup Firestore",
+    "slug": "mvp-startup-firestore",
     "privacy": "public",
     "platforms": [
       "ios",

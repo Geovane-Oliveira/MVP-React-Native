@@ -18,7 +18,6 @@ class Signup extends React.Component {
 					value={this.props.user.name}
 					onChangeText={name => this.props.updateName(name)}
 					placeholder='Nome'
-					autoCapitalize='none'
 				/>
 				<TextInput
 					style={styles.inputBox}
@@ -26,6 +25,9 @@ class Signup extends React.Component {
 					onChangeText={email => this.props.updateEmail(email)}
 					placeholder='Email'
 					autoCapitalize='none'
+					autoCompleteType="email"
+        			textContentType="emailAddress"
+        			keyboardType="email-address"
 				/>
 				<TextInput
 					style={styles.inputBox}
@@ -33,6 +35,7 @@ class Signup extends React.Component {
 					onChangeText={password => this.props.updatePassword(password)}
 					placeholder='Senha'
 					secureTextEntry={true}
+					autoCapitalize="none"
 				/>
 				<TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
 					<Text style={styles.buttonText}>Cadastrar</Text>
@@ -63,14 +66,16 @@ const styles = StyleSheet.create({
 		margin: 10,
 		padding: 15,
 		fontSize: 16,
-		borderColor: '#d3d3d3',
+		borderColor: '#0000',
+		borderRadius: 5,
 		borderBottomWidth: 1,
-		textAlign: 'center',
-		paddingHorizontal: 4,
-    	paddingTop: 4
+		//paddingHorizontal: 4,
+		//paddingTop: 4,
+		marginVertical: 12,
+		backgroundColor: '#ffffff'
 	},
 	button: {
-		marginTop: 30,
+		marginTop: 20,
 		marginBottom: 20,
 		paddingVertical: 10,
 		alignItems: 'center',

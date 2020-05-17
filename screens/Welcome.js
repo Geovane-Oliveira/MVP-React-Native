@@ -45,15 +45,17 @@ const styles = StyleSheet.create({
     	paddingTop: 4
 	},
 	button: {
-		marginTop: 30,
+		marginTop: 20,
 		marginBottom: 20,
 		paddingVertical: 10,
 		alignItems: 'center',
 		backgroundColor: '#2C2929',
-		borderColor: '#000000',
+		borderColor: '#0000',
 		borderWidth: 1,
 		borderRadius: 5,
-		width: 200
+		//width: 200,
+		width: "70%",
+    	marginVertical: 10
 	},
 	buttonText: {
 		fontSize: 20,
