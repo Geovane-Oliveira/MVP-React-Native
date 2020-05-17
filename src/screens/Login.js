@@ -1,24 +1,25 @@
 import React from 'react'
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, TextInput, StyleSheet, TouchableOpacity, Text, Button } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateName, updateEmail, updatePassword, signup } from '../actions/user'
+import { updateName, updateEmail, updatePassword, login, getUser } from '../../actions/user'
+import Firebase from '../../config/Firebase'
 
-class Signup extends React.Component {
-	handleSignUp = () => {
-		this.props.signup()
-		this.props.navigation.navigate('Profile')
+class Login extends React.Component {
+	componentDidMount = () => {
+		Firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				this.props.getUser(user.uid)
+				if (this.props.user != null) {
+					this.props.navigation.navigate('Profile')
+				}
+			}
+		})
 	}
 
 	render() {
 		return (
 			<View style={styles.container}>
-				<TextInput
-					style={styles.inputBox}
-					value={this.props.user.name}
-					onChangeText={name => this.props.updateName(name)}
-					placeholder='Nome'
-				/>
 				<TextInput
 					style={styles.inputBox}
 					value={this.props.user.email}
@@ -37,14 +38,14 @@ class Signup extends React.Component {
 					secureTextEntry={true}
 					autoCapitalize="none"
 				/>
-				<TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
-					<Text style={styles.buttonText}>Cadastrar</Text>
+				<TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
+					<Text style={styles.buttonText}>Entrar</Text>
 				</TouchableOpacity>
 
 				<View style={styles.row}>
-       			 	<Text style={styles.label}>Ja tem uma conta? </Text>
-        			<TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-          				<Text style={styles.link}>Entrar</Text>
+       			 	<Text style={styles.label}>Não tem uma conta? </Text>
+        			<TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')}>
+          				<Text style={styles.link}>Cadastre-se</Text>
         			</TouchableOpacity>
       			</View>
 			</View>
@@ -57,9 +58,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#00A7E1',
 		alignItems: 'center',
-		justifyContent: 'center',
-		paddingBottom: 1,
-    	paddingTop: 50
+		justifyContent: 'center'
 	},
 	inputBox: {
 		width: '70%',
@@ -109,7 +108,7 @@ const styles = StyleSheet.create({
 })
 
 const mapDispatchToProps = dispatch => {
-	return bindActionCreators({ updateName, updateEmail, updatePassword, signup }, dispatch)
+	return bindActionCreators({ updateEmail, updatePassword, login, getUser }, dispatch)
 }
 
 const mapStateToProps = state => {
@@ -121,4 +120,4 @@ const mapStateToProps = state => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Signup)
+)(Login)

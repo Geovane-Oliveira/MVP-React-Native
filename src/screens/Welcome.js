@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { login, signup } from '../actions/user'
+import { login, signup } from '../../actions/user'
 
 class Welcome extends React.Component {
 
